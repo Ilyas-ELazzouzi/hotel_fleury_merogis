@@ -7,7 +7,7 @@ const STATS = [
 
 export default function KeyFactsSection() {
   return (
-    <section className="key-facts" aria-labelledby="key-facts-title">
+    <section className="key-facts page-section" aria-labelledby="key-facts-title">
       <div className="key-facts__inner">
         <h2 id="key-facts-title" className="key-facts__title">
           EN QUELQUES MOTS

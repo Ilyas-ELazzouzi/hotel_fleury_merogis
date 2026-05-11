@@ -5,7 +5,7 @@ export default function ChambresSection() {
   return (
     <section
       id="chambres"
-      className="chambres-section"
+      className="chambres-section page-section"
       aria-labelledby="chambres-title"
     >
       <div className="chambres-gallery">

@@ -1,9 +1,7 @@
-import StarRatingBadge from "./StarRatingBadge";
-
 export default function SiteHeader() {
   return (
     <header className="site-header">
-      <a className="site-header__logo" href="/">
+      <a className="site-header__logo" href="#top">
         HÔTEL FLEURY
       </a>
 
@@ -18,7 +16,6 @@ export default function SiteHeader() {
         <a className="btn-reserver" href="#reserver">
           RÉSERVER
         </a>
-        <StarRatingBadge />
       </div>
     </header>
   );

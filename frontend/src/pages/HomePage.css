@@ -5,6 +5,8 @@
   --white: #ffffff;
   --overlay: rgba(0, 0, 0, 0.52);
   --help-bg: rgba(42, 42, 42, 0.92);
+  --section-rhythm: 2.85rem;
+  --section-rhythm-after-hero: 2.15rem;
 
   position: relative;
   width: 100%;
@@ -37,46 +39,59 @@
 }
 
 .site-header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
+  z-index: 50;
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
-  align-items: start;
-  padding: 2.35rem 3.25rem 1.5rem;
-  gap: 1rem;
+  align-items: center;
+  column-gap: clamp(0.75rem, 2vw, 1.5rem);
+  row-gap: 0;
+  padding: 1.15rem 1.5rem 1.1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.88) 0%,
+    rgba(0, 0, 0, 0.42) 55%,
+    transparent 100%
+  );
+  backdrop-filter: saturate(1.15) blur(14px);
+  -webkit-backdrop-filter: saturate(1.15) blur(14px);
 }
 
 .site-header__logo {
   grid-column: 1;
   justify-self: start;
   align-self: center;
+  min-width: 0;
   font-family: 'Noto Serif', Georgia, serif;
-  font-size: 1.05rem;
+  font-size: clamp(0.78rem, 1.6vw, 1.05rem);
   font-weight: 600;
   letter-spacing: 0.14em;
   color: var(--white);
   text-decoration: none;
   text-transform: uppercase;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .site-header__nav {
   grid-column: 2;
   justify-self: center;
+  align-self: center;
   display: flex;
   align-items: center;
-  gap: 2.65rem;
-  padding-top: 0.15rem;
+  flex-wrap: nowrap;
+  gap: clamp(0.65rem, 2vw, 2.65rem);
+  min-width: 0;
 }
 
 .site-header__nav a {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.72rem;
+  font-size: clamp(0.58rem, 1.35vw, 0.72rem);
   font-weight: 500;
-  letter-spacing: 0.22em;
+  letter-spacing: clamp(0.1em, 0.35vw, 0.22em);
   color: var(--white);
   text-decoration: none;
   text-transform: uppercase;
@@ -90,24 +105,26 @@
 .site-header__aside {
   grid-column: 3;
   justify-self: end;
+  align-self: center;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 1rem;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .btn-reserver {
   font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.72rem;
+  font-size: clamp(0.58rem, 1.35vw, 0.72rem);
   font-weight: 500;
-  letter-spacing: 0.2em;
+  letter-spacing: clamp(0.12em, 0.35vw, 0.2em);
   color: var(--gold);
   text-decoration: none;
   text-transform: uppercase;
-  padding: 0.72rem 1.85rem;
+  padding: clamp(0.55rem, 1.2vw, 0.72rem) clamp(0.85rem, 2vw, 1.85rem);
   border: 1px solid var(--gold);
   background: transparent;
   line-height: 1;
+  white-space: nowrap;
   transition:
     background 0.2s ease,
     color 0.2s ease;
@@ -119,29 +136,6 @@
   border-color: var(--gold);
 }
 
-.etoile-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  padding: 0.45rem 0.75rem;
-  border: 1px solid var(--gold);
-  color: var(--gold-dim);
-}
-
-.etoile-badge__star {
-  flex-shrink: 0;
-  color: var(--gold);
-}
-
-.etoile-badge__label {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  line-height: 1;
-}
-
 .hero {
   position: relative;
   z-index: 5;
@@ -151,7 +145,7 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 6rem 1.5rem 5rem;
+  padding: 7.25rem 1.5rem 5rem;
 }
 
 .hero__title {
@@ -387,28 +381,8 @@
 
 @media (max-width: 1024px) {
   .site-header {
-    grid-template-columns: 1fr;
-    justify-items: center;
-    text-align: center;
-    padding: 1.75rem 1.25rem 1rem;
-  }
-
-  .site-header__logo {
-    grid-column: 1;
-    justify-self: center;
-  }
-
-  .site-header__nav {
-    grid-column: 1;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.25rem 1.5rem;
-  }
-
-  .site-header__aside {
-    grid-column: 1;
-    justify-self: center;
-    align-items: center;
+    padding: 1rem 0.85rem 0.95rem;
+    column-gap: 0.5rem;
   }
 }
 
@@ -457,15 +431,6 @@
 }
 
 @media (max-width: 600px) {
-  .site-header__nav {
-    gap: 0.85rem 1rem;
-  }
-
-  .site-header__nav a {
-    font-size: 0.65rem;
-    letter-spacing: 0.16em;
-  }
-
   .hero {
     padding-top: 10rem;
   }
@@ -494,4 +459,93 @@
     padding-bottom: 2rem;
     margin-bottom: 0.5rem;
   }
+}
+
+/* --- Rythme & séparateurs premium entre blocs (fond noir) --- */
+.page-section {
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-viewport + .page-section {
+  margin-top: var(--section-rhythm-after-hero);
+}
+
+.hero-viewport + .page-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(var(--section-rhythm-after-hero) / -2);
+  transform: translate(-50%, -50%);
+  width: min(90%, 38rem);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(201, 169, 98, 0.14) 22%,
+    rgba(201, 169, 98, 0.42) 50%,
+    rgba(201, 169, 98, 0.14) 78%,
+    transparent 100%
+  );
+  box-shadow: 0 0 32px rgba(201, 169, 98, 0.12);
+  pointer-events: none;
+}
+
+.hero-viewport + .page-section::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3.75rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-section + .page-section {
+  margin-top: var(--section-rhythm);
+}
+
+.page-section + .page-section::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: calc(var(--section-rhythm) / -2);
+  transform: translate(-50%, -50%);
+  width: min(88%, 42rem);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.07) 15%,
+    rgba(201, 169, 98, 0.34) 50%,
+    rgba(255, 255, 255, 0.07) 85%,
+    transparent 100%
+  );
+  box-shadow:
+    0 0 24px rgba(201, 169, 98, 0.1),
+    0 0 60px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+}
+
+.page-section + .page-section::after {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4.5rem;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.035) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-section > * {
+  position: relative;
+  z-index: 1;
 }

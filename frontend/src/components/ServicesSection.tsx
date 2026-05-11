@@ -58,7 +58,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="services-section"
+      className="services-section page-section"
       aria-labelledby="services-heading"
     >
       <div className="services-section__inner">

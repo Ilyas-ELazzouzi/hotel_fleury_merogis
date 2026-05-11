@@ -8,6 +8,14 @@ html {
   height: 100%;
   /* Réserve l’espace scrollbar pour éviter un bloc visuellement décentré */
   scrollbar-gutter: stable;
+  /* Compense le header fixe lors du scroll vers une ancre */
+  scroll-padding-top: clamp(6.75rem, 18vh, 12rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 body {

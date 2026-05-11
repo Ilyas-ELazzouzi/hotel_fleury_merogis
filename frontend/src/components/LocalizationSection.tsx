@@ -46,7 +46,7 @@ export default function LocalizationSection() {
   return (
     <section
       id="localisation"
-      className="localization-section"
+      className="localization-section page-section"
       aria-labelledby="localization-heading"
     >
       <div className="localization-section__inner">
