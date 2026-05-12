@@ -1,4 +1,24 @@
-# React + TypeScript + Vite
+# Hôtel Fleury Mérogis — frontend
+
+Application React (Vite + TypeScript) pour le site vitrine.
+
+## Déploiement sur Vercel
+
+1. Connecter le dépôt Git à [Vercel](https://vercel.com) (**Import Project**).
+2. Laisser les réglages par défaut : le fichier `vercel.json` à la **racine du dépôt** indique déjà :
+   - installation et build dans `frontend/`
+   - sortie : `frontend/dist`
+   - réécriture SPA vers `index.html` (routes futures ou rafraîchissement direct d’URL).
+3. **Framework Preset** : « Vite » si proposé, sinon « Other ». Deux possibilités équivalentes :
+   - **Racine du dépôt = racine Git** (recommandé) : ne pas toucher à « Root Directory » ; le `vercel.json` à la racine pilote `frontend/`.
+   - **Root Directory = `frontend`** dans les paramètres du projet : Vercel utilise alors `frontend/package.json` et le `frontend/vercel.json` (réécritures SPA uniquement).
+4. Déployer : chaque push sur la branche liée déclenche un build (`npm ci` puis `npm run build` dans `frontend`).
+
+Variables d’environnement : aucune requise pour le build actuel. Node **≥ 20** (voir `engines` dans `package.json`).
+
+---
+
+## React + TypeScript + Vite (modèle d’origine)
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
