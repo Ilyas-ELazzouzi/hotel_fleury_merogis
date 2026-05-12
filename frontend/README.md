@@ -7,15 +7,12 @@ Application React (Vite + TypeScript) pour le site vitrine.
 **Structure de ce dépôt** : le projet Vite est dans le dossier **`frontend/`**.
 
 1. Dans Vercel, définis **Root Directory** sur **`frontend`** (comme dans l’assistant d’import).
-2. Le fichier **`vercel.json` à la racine du repo** ne contient plus que des **réécritures SPA** (pas de `installCommand` / `buildCommand`). Vercel exécute alors par défaut `npm install` / `npm run build` **dans** `frontend/`, ce qui évite l’erreur `cd frontend: No such file or directory`.
-3. Le fichier **`frontend/vercel.json`** duplique les mêmes réécritures si seule la config du sous-dossier est prise en compte.
+2. Le fichier **`frontend/vercel.json`** impose explicitement **`npm ci`**, **`npm run build`** et la sortie **`dist`** (sans `cd frontend`), pour le cas où Vercel lit la config du sous-dossier.
+3. Le **`vercel.json` à la racine du repo** ne contient que des **réécritures SPA** (pas de commandes d’install).
 
-**Si le build affiche encore `cd frontend && npm ci`** :
+**Si les logs montrent encore `cd frontend && npm ci`** : ce n’est presque jamais le dépôt à jour, mais le **projet Vercel** qui garde une ancienne commande dans l’UI. Va dans **Project → Settings → General → Build & Development Settings** → **Build and Output Settings** et **désactive les overrides** (Install / Build / Output) pour qu’on utilise le `frontend/vercel.json` du repo, ou remplace manuellement par `npm ci`, `npm run build`, `dist` sans `cd`.
 
-- Soit le **commit sur GitHub** n’inclut pas le dernier `vercel.json` : fais un `git pull` / pousse tes changements.
-- Soit une **commande d’installation personnalisée** est enregistrée dans le projet Vercel : **Settings → General → Build & Development Settings** → remets **Install Command** sur **« Override » désactivé** (valeur par défaut), idem pour **Build Command** si tu y avais mis `cd frontend...`.
-
-Framework **Vite** (ou détection auto), sortie **`dist`**. Node **≥ 20** (`engines` dans `frontend/package.json`). Aucune variable d’environnement requise pour le build actuel.
+Framework **Vite** (ou détection auto). Node **≥ 20** (`engines` dans `frontend/package.json`). Aucune variable d’environnement requise pour le build actuel.
 
 ---
 
