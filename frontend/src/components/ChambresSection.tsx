@@ -10,12 +10,10 @@ export default function ChambresSection() {
     >
       <div className="chambres-gallery">
         <header className="chambres-gallery__header">
-          <div>
-            <p className="chambres-gallery__eyebrow">NOS CHAMBRES</p>
-            <h2 id="chambres-title" className="chambres-gallery__subtitle">
-              Le Repos Silencieux
-            </h2>
-          </div>
+          <p className="chambres-gallery__eyebrow">NOS CHAMBRES</p>
+          <h2 id="chambres-title" className="chambres-gallery__title">
+            Le Repos Silencieux
+          </h2>
         </header>
 
         <div className="chambres-grid">

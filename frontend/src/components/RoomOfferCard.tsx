@@ -14,6 +14,9 @@ export default function RoomOfferCard({ room }: RoomOfferCardProps) {
       <div className="chambres-card__content">
         <h3 className="chambres-card__title">{room.name}</h3>
       </div>
+      <a className="chambres-card__reserve" href="#reserver">
+        Réserver
+      </a>
     </article>
   );
 }
