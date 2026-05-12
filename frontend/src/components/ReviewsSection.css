@@ -25,7 +25,34 @@
 
 .reviews-section__header {
   text-align: center;
-  margin-bottom: 2.75rem;
+  margin-bottom: 3.35rem;
+}
+
+.reviews-section__eyebrow {
+  margin: 0 0 0.65rem;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--reviews-gold);
+}
+
+.reviews-section__title {
+  margin: 0;
+  font-family: "Noto Serif", Georgia, serif;
+  font-size: clamp(1.85rem, 3.8vw, 2.65rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--reviews-text);
+  line-height: 1.15;
+}
+
+.reviews-section__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1.85rem;
 }
 
 .reviews-section__score {
@@ -89,6 +116,21 @@
   text-align: left;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .reviews-card {
+    transition:
+      transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.4s ease,
+      box-shadow 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reviews-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(212, 175, 55, 0.22);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  }
+}
+
 .reviews-card__stars {
   display: flex;
   align-items: center;
@@ -145,7 +187,11 @@
   }
 
   .reviews-section__header {
-    margin-bottom: 2.25rem;
+    margin-bottom: 2.75rem;
+  }
+
+  .reviews-section__rating {
+    margin-top: 1.5rem;
   }
 
   .reviews-grid {

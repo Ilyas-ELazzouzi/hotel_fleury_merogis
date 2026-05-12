@@ -1,5 +1,6 @@
 import HeroIntro from "./HeroIntro";
 import ScrollHint from "./ScrollHint";
+import StarRatingBadge from "./StarRatingBadge";
 
 type HeroViewportProps = {
   backgroundImage: string;
@@ -17,6 +18,9 @@ export default function HeroViewport({ backgroundImage }: HeroViewportProps) {
 
       <HeroIntro />
       <ScrollHint />
+      <div className="hero-star-badge">
+        <StarRatingBadge />
+      </div>
     </div>
   );
 }

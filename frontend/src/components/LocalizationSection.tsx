@@ -51,12 +51,11 @@ export default function LocalizationSection() {
     >
       <div className="localization-section__inner">
         <header className="localization-section__header">
+          <p className="localization-section__eyebrow">LOCALISATION</p>
           <h2 id="localization-heading" className="localization-section__title">
             Idéalement situé
           </h2>
-          <p className="localization-section__subtitle">
-            Fleury-Mérogis, Île-de-France
-          </p>
+          <p className="localization-section__lead">Fleury-Mérogis, Île-de-France</p>
         </header>
 
         <div className="localization-grid">

@@ -10,7 +10,7 @@ export default function SiteFooter() {
           <div className="site-footer__col site-footer__col--address">
             <h3 className="site-footer__col-title">ADRESSE</h3>
             <address className="site-footer__address">
-              2 AVENUE DE L&apos;ANCIEN CANAL
+              Lotissement la Greffiere, Rue du Chene à Champagne
               <br />
               91700 FLEURY-MÉROGIS
             </address>
@@ -21,12 +21,12 @@ export default function SiteFooter() {
             <div className="site-footer__contact-lines">
               <p className="site-footer__contact-line">
                 <span className="site-footer__contact-prefix">T:</span>{" "}
-                <a href="tel:+33123456789">+33 (0)1 23 45 67 89</a>
+                <a href="tel:+33123456789">+33 (0)1 69 46 14 85</a>
               </p>
               <p className="site-footer__contact-line">
                 <span className="site-footer__contact-prefix">E:</span>{" "}
-                <a href="mailto:hello@hotel-fleury.com">
-                  HELLO@HOTEL-FLEURY.COM
+                <a href="mailto:reservations.hotelfleury@gmail.com">
+                reservations.hotelfleury@gmail.com
                 </a>
               </p>
             </div>

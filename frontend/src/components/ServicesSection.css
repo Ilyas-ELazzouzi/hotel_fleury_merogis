@@ -63,6 +63,16 @@
   max-width: 20rem;
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  .services-card {
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .services-card:hover {
+    transform: translateY(-5px);
+  }
+}
+
 .services-card:nth-child(1) {
   grid-column: 1 / span 2;
 }

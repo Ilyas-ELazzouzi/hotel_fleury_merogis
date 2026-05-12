@@ -1,0 +1,55 @@
+/* Entrées au scroll — courbe type “expo out” */
+.scroll-reveal {
+  --sr-duration: 0.95s;
+  --sr-ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --sr-distance: 2rem;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+}
+
+.scroll-reveal--fade-up {
+  opacity: 0;
+  transform: translate3d(0, var(--sr-distance), 0);
+  transition:
+    opacity var(--sr-duration) var(--sr-ease) var(--sr-delay, 0ms),
+    transform var(--sr-duration) var(--sr-ease) var(--sr-delay, 0ms);
+}
+
+.scroll-reveal--fade-up.scroll-reveal--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.scroll-reveal--fade {
+  opacity: 0;
+  transition: opacity var(--sr-duration) var(--sr-ease) var(--sr-delay, 0ms);
+}
+
+.scroll-reveal--fade.scroll-reveal--visible {
+  opacity: 1;
+}
+
+.scroll-reveal--scale {
+  opacity: 0;
+  transform: scale(0.97);
+  transform-origin: 50% 40%;
+  transition:
+    opacity var(--sr-duration) var(--sr-ease) var(--sr-delay, 0ms),
+    transform calc(var(--sr-duration) * 1.05) var(--sr-ease) var(--sr-delay, 0ms);
+}
+
+.scroll-reveal--scale.scroll-reveal--visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal--fade-up,
+  .scroll-reveal--fade,
+  .scroll-reveal--scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

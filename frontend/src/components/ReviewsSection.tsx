@@ -17,16 +17,22 @@ export default function ReviewsSection() {
     >
       <div className="reviews-section__inner">
         <header className="reviews-section__header">
-          <h2 id="reviews-heading" className="reviews-section__score">
-            {GLOBAL_SCORE}
+          <p className="reviews-section__eyebrow">AVIS</p>
+          <h2 id="reviews-heading" className="reviews-section__title">
+            Ce qu&apos;ils en disent
           </h2>
-          <StarRow
-            filledCount={GLOBAL_STAR_FILLED}
-            size={22}
-            className="reviews-section__stars"
-            aria-label={`${GLOBAL_STAR_FILLED} étoiles sur 5`}
-          />
-          <p className="reviews-section__count">{REVIEW_COUNT_LABEL}</p>
+          <div
+            className="reviews-section__rating"
+            aria-label={`Note moyenne ${GLOBAL_SCORE} sur 5, ${REVIEW_COUNT_LABEL}`}
+          >
+            <p className="reviews-section__score">{GLOBAL_SCORE}</p>
+            <StarRow
+              filledCount={GLOBAL_STAR_FILLED}
+              size={22}
+              className="reviews-section__stars"
+            />
+            <p className="reviews-section__count">{REVIEW_COUNT_LABEL}</p>
+          </div>
         </header>
 
         <div className="reviews-grid">

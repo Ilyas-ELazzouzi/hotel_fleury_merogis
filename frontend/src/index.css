@@ -16,6 +16,10 @@ html {
   html {
     scroll-behavior: auto;
   }
+
+  .scroll-hint__chevron {
+    animation: none !important;
+  }
 }
 
 body {

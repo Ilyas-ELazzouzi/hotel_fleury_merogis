@@ -10,6 +10,7 @@ export default function SiteHeader() {
         <a href="#services">SERVICES</a>
         <a href="#localisation">LOCALISATION</a>
         <a href="#avis">AVIS</a>
+        <a href="#galerie">GALERIE</a>
       </nav>
 
       <div className="site-header__aside">
