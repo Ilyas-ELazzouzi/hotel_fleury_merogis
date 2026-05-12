@@ -4,21 +4,18 @@ Application React (Vite + TypeScript) pour le site vitrine.
 
 ## Déploiement sur Vercel
 
-Le fichier `vercel.json` à la **racine du dépôt** s’adapte automatiquement à deux structures Git :
+**Structure de ce dépôt** : le projet Vite est dans le dossier **`frontend/`**.
 
-1. **Monorepo** (dossier `frontend/` à la racine, comme ce dépôt en local) : installation avec `npm ci --prefix frontend`, build idem, puis copie de `frontend/dist` vers `dist` pour que Vercel serve toujours depuis **`dist`**.
-2. **Dépôt plat** (fichiers Vite/React à la racine, sans sous-dossier `frontend/`) : `npm ci` et `npm run build` à la racine, sortie **`dist`**.
+1. Dans Vercel, définis **Root Directory** sur **`frontend`** (comme dans l’assistant d’import).
+2. Le fichier **`vercel.json` à la racine du repo** ne contient plus que des **réécritures SPA** (pas de `installCommand` / `buildCommand`). Vercel exécute alors par défaut `npm install` / `npm run build` **dans** `frontend/`, ce qui évite l’erreur `cd frontend: No such file or directory`.
+3. Le fichier **`frontend/vercel.json`** duplique les mêmes réécritures si seule la config du sous-dossier est prise en compte.
 
-Dans les deux cas : **ne pas** définir « Root Directory » sur `frontend` si vous avez bien le dossier `frontend/` à la racine Git (sinon la commande ne trouve plus `frontend/`). Si tout votre code est déjà **dans** `frontend/` sur Git et qu’il n’y a pas de dossier `frontend` au-dessus, configurez alors **Root Directory = `frontend`** dans Vercel et utilisez le fichier `frontend/vercel.json` (réécritures SPA) ; laissez vide les commandes personnalisées dans le tableau de bord pour utiliser `npm run build` par défaut.
+**Si le build affiche encore `cd frontend && npm ci`** :
 
-Étapes rapides :
+- Soit le **commit sur GitHub** n’inclut pas le dernier `vercel.json` : fais un `git pull` / pousse tes changements.
+- Soit une **commande d’installation personnalisée** est enregistrée dans le projet Vercel : **Settings → General → Build & Development Settings** → remets **Install Command** sur **« Override » désactivé** (valeur par défaut), idem pour **Build Command** si tu y avais mis `cd frontend...`.
 
-1. Importer le dépôt sur [Vercel](https://vercel.com).
-2. **Root Directory** : laisser vide si la racine Git contient `frontend/` ; sinon mettre `frontend` si le projet Vite est uniquement dans ce sous-dossier.
-3. Framework **Vite** ou **Other** ; aucune variable d’environnement requise pour le build actuel.
-4. Node **≥ 20** (voir `engines` dans `frontend/package.json`).
-
-Les réécritures SPA envoient les URL vers `index.html` pour les rafraîchissements directs.
+Framework **Vite** (ou détection auto), sortie **`dist`**. Node **≥ 20** (`engines` dans `frontend/package.json`). Aucune variable d’environnement requise pour le build actuel.
 
 ---
 
