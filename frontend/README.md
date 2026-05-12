@@ -4,17 +4,21 @@ Application React (Vite + TypeScript) pour le site vitrine.
 
 ## Déploiement sur Vercel
 
-1. Connecter le dépôt Git à [Vercel](https://vercel.com) (**Import Project**).
-2. Laisser les réglages par défaut : le fichier `vercel.json` à la **racine du dépôt** indique déjà :
-   - installation et build dans `frontend/`
-   - sortie : `frontend/dist`
-   - réécriture SPA vers `index.html` (routes futures ou rafraîchissement direct d’URL).
-3. **Framework Preset** : « Vite » si proposé, sinon « Other ». Deux possibilités équivalentes :
-   - **Racine du dépôt = racine Git** (recommandé) : ne pas toucher à « Root Directory » ; le `vercel.json` à la racine pilote `frontend/`.
-   - **Root Directory = `frontend`** dans les paramètres du projet : Vercel utilise alors `frontend/package.json` et le `frontend/vercel.json` (réécritures SPA uniquement).
-4. Déployer : chaque push sur la branche liée déclenche un build (`npm ci` puis `npm run build` dans `frontend`).
+Le fichier `vercel.json` à la **racine du dépôt** s’adapte automatiquement à deux structures Git :
 
-Variables d’environnement : aucune requise pour le build actuel. Node **≥ 20** (voir `engines` dans `package.json`).
+1. **Monorepo** (dossier `frontend/` à la racine, comme ce dépôt en local) : installation avec `npm ci --prefix frontend`, build idem, puis copie de `frontend/dist` vers `dist` pour que Vercel serve toujours depuis **`dist`**.
+2. **Dépôt plat** (fichiers Vite/React à la racine, sans sous-dossier `frontend/`) : `npm ci` et `npm run build` à la racine, sortie **`dist`**.
+
+Dans les deux cas : **ne pas** définir « Root Directory » sur `frontend` si vous avez bien le dossier `frontend/` à la racine Git (sinon la commande ne trouve plus `frontend/`). Si tout votre code est déjà **dans** `frontend/` sur Git et qu’il n’y a pas de dossier `frontend` au-dessus, configurez alors **Root Directory = `frontend`** dans Vercel et utilisez le fichier `frontend/vercel.json` (réécritures SPA) ; laissez vide les commandes personnalisées dans le tableau de bord pour utiliser `npm run build` par défaut.
+
+Étapes rapides :
+
+1. Importer le dépôt sur [Vercel](https://vercel.com).
+2. **Root Directory** : laisser vide si la racine Git contient `frontend/` ; sinon mettre `frontend` si le projet Vite est uniquement dans ce sous-dossier.
+3. Framework **Vite** ou **Other** ; aucune variable d’environnement requise pour le build actuel.
+4. Node **≥ 20** (voir `engines` dans `frontend/package.json`).
+
+Les réécritures SPA envoient les URL vers `index.html` pour les rafraîchissements directs.
 
 ---
 
